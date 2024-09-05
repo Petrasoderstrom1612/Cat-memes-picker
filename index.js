@@ -19,11 +19,11 @@ const catsData = [
     }
 ]
 
-// function displayOneArr(cats){    //make the argument generic so you can even use for new arguments
+// function displayOneArr(cats){    //catsData will be taken in as cats
 //     let newArr = []
-//     for (let i=0;i<cats.length;i++){   //you loop through the outer array's length to get each individual object
-//         for(let j=0;j<cats[i].emotionTags.length;j++){ //you go in each object on the forloop in its emotionTag's length
-//             newArr.push(cats[i].emotionTags[j]) //you want to get each object and each emotion in it
+//     for (let i=0;i<cats.length;i++){   //the outer forloop will just iterate over cats
+//         for(let j=0;j<cats[i].emotionTags.length;j++){ //the inner forloop will iterate over emotions of Each cat
+//             newArr.push(cats[i].emotionTags[j]) //Each emotion tag will be pushed One by One to the newArr
 //         }
 //     }
 //     console.log(newArr)
@@ -31,12 +31,17 @@ const catsData = [
 
 // displayOneArr(catsData) //the real name of the array
 
+
 function displayOneArr(cats){ 
+    const emotionsArr = []
+
     for(let cat of cats){  //FOR OF one | JS name(here my own argument name)
-        for(let emotionTag of cat.emotionTags){ //one of oneFromPrevious . the real object name
-            console.log(emotionTag)
+        for(let emotion of cat.emotionTags){ //one of oneFromPrevious.the real property name on object
+            emotionsArr.push(emotion)
         }
     }
+
+    return emotionsArr
 }
 
 displayOneArr(catsData)
