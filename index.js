@@ -19,7 +19,9 @@ const catsData = [
     }
 ]
 
-// function displayOneArr(cats){    //catsData will be taken in as cats
+const emotionRadiosEl = document.getElementById("emotion-radios-el")
+
+// function getEmotionsArr(cats){    //catsData will be taken in as cats
 //     let newArr = []
 //     for (let i=0;i<cats.length;i++){   //the outer forloop will just iterate over cats
 //         for(let j=0;j<cats[i].emotionTags.length;j++){ //the inner forloop will iterate over emotions of Each cat
@@ -29,10 +31,10 @@ const catsData = [
 //     console.log(newArr)
 // }
 
-// displayOneArr(catsData) //the real name of the array
+// getEmotionsArr(catsData) //the real name of the array
 
 
-function displayOneArr(cats){ 
+function getEmotionsArr(cats){ 
     const emotionsArr = []
 
     for(let cat of cats){  //FOR OF one | JS name(here my own argument name)
@@ -44,4 +46,18 @@ function displayOneArr(cats){
     return emotionsArr
 }
 
-displayOneArr(catsData)
+function renderEmotionRadios(cats){
+    const emotionsForRadios = getEmotionsArr(cats) // []
+    let radioBtns = ""
+    for(let i=0; i< emotionsForRadios.length;i++){ //name must be the same for all radios so they are grupped
+        radioBtns += `<label>
+                      ${emotionsForRadios[i]}
+                      <input type="radio" id="${i}" for="${i}" name="emotion" value="${emotionsForRadios[i]}"/> 
+                      </label>
+                     `
+    }
+    emotionRadiosEl.innerHTML = radioBtns
+}
+
+renderEmotionRadios(catsData)
+
