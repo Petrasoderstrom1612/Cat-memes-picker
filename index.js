@@ -30,11 +30,15 @@ function getEmotionsArr(cats){
 function renderEmotionRadios(cats){
     const emotionsForRadios = getEmotionsArr(cats) // []
     let radioBtns = ""
-    for(let i=0; i< emotionsForRadios.length;i++){ //name must be the same for all radios so they are grupped
-        radioBtns += `<label>
+    for(let i=0; i< emotionsForRadios.length;i++){ //name must be the same for all radios so they are grupped, id is used for screenreaders
+        radioBtns += `<label for="${emotionsForRadios[i]-i}">
                       ${emotionsForRadios[i]}
-                      <input type="radio" id="${i}" for="${i}" name="emotion" value="${emotionsForRadios[i]}"/> 
                       </label>
+                      <input 
+                      type="radio" 
+                      id="${emotionsForRadios[i]-i}" 
+                      name="emotion" 
+                      value="${emotionsForRadios[i]}"/> 
                      `
     }
     emotionRadiosEl.innerHTML = radioBtns
