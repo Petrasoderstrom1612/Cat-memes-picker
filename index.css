@@ -152,3 +152,10 @@ input[type="radio"]{
     background-color: #bd301d;
     border: 2px solid #bd301d;
 }
+
+.radio{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #bcbcbc;
+    padding: 4px 8px;
+}

@@ -15,7 +15,7 @@ const emotionRadiosEl = document.getElementById("emotion-radios-el")
 // getEmotionsArr(catsData) //the real name of the array
 
 
-function getEmotionsArr(cats){ 
+function getEmotionsArr(cats){ //THIS FUNCTION IS TO GENERATE AN ARRAY OF EMOTIONS, ALSO AN INTERESTING DETAIL, NOTICE HOW THE REAL NAME CATSDATA IS NOT EVEN USED IN THIS FUNCTION, WE ARE JUST PASSING OUT OWN ARGUMENT NICKNAME AND IT IS PASSED OVER THIS FUNCTION TO THE RENDEREMOTIONRADIOS WHERE IT IS FINALLY CALLED UPON
     const emotionsArr = []
 
     for(let cat of cats){  //FOR OF one | JS name(here my own argument name)
@@ -31,14 +31,14 @@ function renderEmotionRadios(cats){
     const emotionsForRadios = getEmotionsArr(cats) // []
     let radioBtns = ""
     for(let i=0; i< emotionsForRadios.length;i++){ //name must be the same for all radios so they are grupped, id is used for screenreaders
-        radioBtns += `<label for="${emotionsForRadios[i]-i}">
-                      ${emotionsForRadios[i]}
-                      </label>
-                      <input 
-                      type="radio" 
-                      id="${emotionsForRadios[i]-i}" 
-                      name="emotion" 
-                      value="${emotionsForRadios[i]}"/> 
+        radioBtns += `<div class="radio">
+                        <label for="${emotionsForRadios[i]-i}">${emotionsForRadios[i]}</label>
+                        <input 
+                        type="radio" 
+                        id="${emotionsForRadios[i]-i}" 
+                        name="emotion" 
+                        value="${emotionsForRadios[i]}"/> 
+                      </div>
                      `
     }
     emotionRadiosEl.innerHTML = radioBtns
