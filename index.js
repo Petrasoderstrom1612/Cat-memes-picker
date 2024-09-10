@@ -5,7 +5,7 @@ const emotionRadiosEl = document.getElementById("emotion-radios-el")
 // function getEmotionsArr(cats){    //catsData will be taken in as cats
 //     let newArr = []
 //     for (let i=0;i<cats.length;i++){   //the outer forloop will just iterate over cats
-//         for(let j=0;j<cats[i].emotionTags.length;j++){ //the inner forloop will iterate over emotions of Each cat
+//         for(let j=0;j<cats[i].emotionTags.length;j++){ //the inner forloop will iterate over Each cat's emotions
 //             newArr.push(cats[i].emotionTags[j]) //Each emotion tag will be pushed One by One to the newArr
 //         }
 //     }
@@ -20,7 +20,9 @@ function getEmotionsArr(cats){ //THIS FUNCTION IS TO GENERATE AN ARRAY OF EMOTIO
 
     for(let cat of cats){  //FOR OF one | JS name(here my own argument name)
         for(let emotion of cat.emotionTags){ //one of oneFromPrevious.the real property name on object
-            emotionsArr.push(emotion)
+            if(!emotionsArr.includes(emotion)){
+                emotionsArr.push(emotion)
+            }
         }
     }
 
