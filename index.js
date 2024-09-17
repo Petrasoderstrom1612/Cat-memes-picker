@@ -29,15 +29,15 @@ function getEmotionsArr(cats){ //THIS FUNCTION IS TO GENERATE AN ARRAY OF EMOTIO
     return emotionsArr
 }
 
-function renderEmotionRadios(cats){
+function renderEmotionRadios(cats){ //THIS FUNCTION IS TO CREATE A HTML WITH EMOTIONS
     const emotionsForRadios = getEmotionsArr(cats) // []
     let radioBtns = ""
     for(let i=0; i< emotionsForRadios.length;i++){ //name must be the same for all radios so they are grupped, id is used for screenreaders
         radioBtns += `<div class="radio">
-                        <label for="${emotionsForRadios[i]-i}">${emotionsForRadios[i]}</label>
+                        <label for="${emotionsForRadios[i]}">${emotionsForRadios[i]}</label>
                         <input 
                         type="radio" 
-                        id="${emotionsForRadios[i]-i}" 
+                        id="${emotionsForRadios[i]}" 
                         name="emotion" 
                         value="${emotionsForRadios[i]}"/> 
                       </div>
@@ -47,4 +47,9 @@ function renderEmotionRadios(cats){
 }
 
 renderEmotionRadios(catsData)
+
+emotionRadiosEl.addEventListener("click", function(e){
+    console.log(e.target.id)
+})
+
 
