@@ -29,7 +29,7 @@ function getEmotionsArr(cats){ //THIS FUNCTION IS TO GENERATE AN ARRAY OF EMOTIO
     return emotionsArr
 }
 
-function renderEmotionRadios(cats){ //THIS FUNCTION IS TO CREATE A HTML WITH EMOTIONS
+function renderEmotionRadios(cats){ //THIS FUNCTION IS TO CREATE AN HTML WITH EMOTIONS
     const emotionsForRadios = getEmotionsArr(cats) // []
     let radioBtns = ""
     for(let i=0; i< emotionsForRadios.length;i++){ //name must be the same for all radios so they are grupped, id is used for screenreaders
@@ -48,8 +48,9 @@ function renderEmotionRadios(cats){ //THIS FUNCTION IS TO CREATE A HTML WITH EMO
 
 renderEmotionRadios(catsData)
 
-emotionRadiosEl.addEventListener("click", function(e){
-    console.log(e.target.id)
-})
+emotionRadiosEl.addEventListener("change", highlightChecked)
 
+function highlightChecked(e){
+    document.getElementById(e.target.id).parentElement.classList.add("highlight")
+}
 
