@@ -1,6 +1,7 @@
 import {catsData} from "./data.js"
 
 const emotionRadiosEl = document.getElementById("emotion-radios-el")
+const getImageBtn = document.getElementById("get-image-btn")
 
 // function getEmotionsArr(cats){    //catsData will be taken in as cats
 //     let newArr = []
@@ -49,6 +50,7 @@ function renderEmotionRadios(cats){ //THIS FUNCTION IS TO CREATE AN HTML WITH EM
 renderEmotionRadios(catsData)
 
 emotionRadiosEl.addEventListener("change", highlightChecked) //CSS TO HIGHLIGHT CHECKED
+
 function highlightChecked(e){
 const checkedCollection = document.getElementsByClassName("radio") //you need to target a static class, here you looped through data.js, created the html and never touched it again so this class can be used. But not a class that has been manipulated through .add or .remove as the dom makes the loop through collection and then before it is changed another loop so the behavior is unpredictable skipping some checked.
 for (let oneChecked of checkedCollection){
@@ -56,5 +58,14 @@ for (let oneChecked of checkedCollection){
 }
 
     document.getElementById(e.target.id).parentElement.classList.add("highlight") //highlight only the last one and you do it on where you click as it is input and it's parent is "radio" since it colors the entire line
+}
+
+getImageBtn.addEventListener("click", getCheckedRadio)
+
+function getCheckedRadio(){
+   if(document.querySelector('input[type="radio"]:checked')){
+   const checkedRadio = document.querySelector("input[type=radio]:checked").value
+   console.log(checkedRadio)
+   }
 }
 
