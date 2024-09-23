@@ -62,17 +62,27 @@ for (let oneChecked of checkedCollection){
 }
 
 getImageBtn.addEventListener("click", () => { //when getting image, find which emotion was checked and if gif is wanted
-    getCheckedRadio() 
-    wantGif()})
+    // getCheckedRadio() //not needed, invoking the function in getMatchingCat()
+    wantGif()
+    getMatchingCat()
+})
 
 function getCheckedRadio(){
    if(document.querySelector('input[type="radio"]:checked')){
    const checkedRadio = document.querySelector("input[type=radio]:checked").value
-   console.log(checkedRadio)
+   return checkedRadio
    }
 }
 
 function wantGif(){
     const isGif = gifsOnlyOption.checked
     console.log(isGif)
+}
+
+function getMatchingCat(){
+    let checkedRadio = getCheckedRadio()
+    const catFromMatchingArray = catsData.filter(function(oneMatchingCat){
+        return oneMatchingCat.emotionTags.includes(checkedRadio)
+    })
+    console.log(catFromMatchingArray)
 }
