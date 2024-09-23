@@ -2,6 +2,7 @@ import {catsData} from "./data.js"
 
 const emotionRadiosEl = document.getElementById("emotion-radios-el")
 const getImageBtn = document.getElementById("get-image-btn")
+const gifsOnlyOption = document.getElementById("gifs-only-option")
 
 // function getEmotionsArr(cats){    //catsData will be taken in as cats
 //     let newArr = []
@@ -60,7 +61,9 @@ for (let oneChecked of checkedCollection){
     document.getElementById(e.target.id).parentElement.classList.add("highlight") //highlight only the last one and you do it on where you click as it is input and it's parent is "radio" since it colors the entire line
 }
 
-getImageBtn.addEventListener("click", getCheckedRadio)
+getImageBtn.addEventListener("click", () => { //when getting image, find which emotion was checked and if gif is wanted
+    getCheckedRadio() 
+    wantGif()})
 
 function getCheckedRadio(){
    if(document.querySelector('input[type="radio"]:checked')){
@@ -69,3 +72,7 @@ function getCheckedRadio(){
    }
 }
 
+function wantGif(){
+    const isGif = gifsOnlyOption.checked
+    console.log(isGif)
+}
