@@ -62,27 +62,25 @@ for (let oneChecked of checkedCollection){
 }
 
 getImageBtn.addEventListener("click", () => { //when getting image, find which emotion was checked and if gif is wanted
-    // getCheckedRadio() //not needed, invoking the function in getMatchingCat()
-    wantGif()
-    getMatchingCat()
+    getMatchingCatsArray()
 })
 
-function getCheckedRadio(){
-   if(document.querySelector('input[type="radio"]:checked')){
-   const checkedRadio = document.querySelector("input[type=radio]:checked").value
-   return checkedRadio
-   }
-}
-
-function wantGif(){
-    const isGif = gifsOnlyOption.checked
-    console.log(isGif)
-}
-
-function getMatchingCat(){
-    let checkedRadio = getCheckedRadio()
-    const catFromMatchingArray = catsData.filter(function(oneMatchingCat){
-        return oneMatchingCat.emotionTags.includes(checkedRadio)
-    })
-    console.log(catFromMatchingArray)
+function getMatchingCatsArray(){     
+    if(document.querySelector('input[type="radio"]:checked')){ //if a choice was made, perform the function
+        const selectedEmotion = document.querySelector('input[type="radio"]:checked').value //user's choice of radio - emotion
+        const isGif = gifsOnlyOption.checked //if user chose gif or not
+        let usersChoice
+        
+        const matchingCatsArray = catsData.filter(function(cat){ //filter over the array of data.js and match it with the user's choice, filter forward the match
+            if(isGif){
+                usersChoice = cat.emotionTags.includes(selectedEmotion) && cat.isGif
+            }
+            else {
+                usersChoice = cat.emotionTags.includes(selectedEmotion)
+            }
+            console.log(usersChoice) //this console.log displays every forloop and states whether the if is true or false (you can also place it in the if and else parts)
+            return usersChoice
+        })
+        console.log(matchingCatsArray)
+    }  
 }
