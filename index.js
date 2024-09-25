@@ -55,52 +55,52 @@ renderEmotionRadios(catsData) //ACTIVATES THE TWO FUNCTIONS ABOVE AS THE SECOND 
 
 emotionRadiosEl.addEventListener("change", highlightChecked) //CSS TO HIGHLIGHT CHECKED
 
-function highlightChecked(e){
-const checkedCollection = document.getElementsByClassName("radio") //you need to target a static class, here you looped through data.js, created the html and never touched it again so this class can be used. But not a class that has been manipulated through .add or .remove as the dom makes the loop through collection and then before it is changed another loop so the behavior is unpredictable skipping some checked.
-for (let oneChecked of checkedCollection){
-    oneChecked.classList.remove("highlight") //you remove all the "highlight" added to "radio" if there, if none, nothing happens
-}
+    function highlightChecked(e){
+    const checkedCollection = document.getElementsByClassName("radio") //you need to target a static class, here you looped through data.js, created the html and never touched it again so this class can be used. But not a class that has been manipulated through .add or .remove as the dom makes the loop through collection and then before it is changed another loop so the behavior is unpredictable skipping some checked.
+    for (let oneChecked of checkedCollection){
+        oneChecked.classList.remove("highlight") //you remove all the "highlight" added to "radio" if there, if none, nothing happens
+    }
 
-    document.getElementById(e.target.id).parentElement.classList.add("highlight") //highlight only the last one and you do it on where you click as it is input and it's parent is "radio" since it colors the entire line
-}
+        document.getElementById(e.target.id).parentElement.classList.add("highlight") //highlight only the last one and you do it on where you click as it is input and it's parent is "radio" since it colors the entire line
+    }
 
-getImageBtn.addEventListener("click", () => { // FUNCTION TO GET US A FINAL CAT, invokes all the three following functions below, from the last one that invokes one above and that one one above 
+getImageBtn.addEventListener("click", () => { // FUNCTIONS TO GET US A FINAL CAT, invokes all the three following functions below, from the last one that invokes one above and that one one above 
     renderFinalCat()
 })
 
-function getMatchingCatsArray(){     
-    if(document.querySelector('input[type="radio"]:checked')){ //if a choice was made, perform the function
-        const selectedEmotion = document.querySelector('input[type="radio"]:checked').value //user's choice of radio - emotion
-        const isGif = gifsOnlyOption.checked //if user chose gif or not
-        let usersChoice
-        
-        const matchingCatsArray = catsData.filter(function(cat){ //filter over the array of data.js and match it with the user's choice, filter forward the match
-            if(isGif){
-                usersChoice = cat.emotionTags.includes(selectedEmotion) && cat.isGif
-            }
-            else {
-                usersChoice = cat.emotionTags.includes(selectedEmotion)
-            }
-            console.log(usersChoice) //this console.log displays every forloop and states whether the if is true or false (you can also place it in the if and else parts)
-            return usersChoice
-        })
-        return matchingCatsArray
-    }  
-}
+    function getMatchingCatsArray(){     
+        if(document.querySelector('input[type="radio"]:checked')){ //if a choice was made, perform the function
+            const selectedEmotion = document.querySelector('input[type="radio"]:checked').value //user's choice of radio - emotion
+            const isGif = gifsOnlyOption.checked //if user chose gif or not
+            let usersChoice
+            
+            const matchingCatsArray = catsData.filter(function(cat){ //filter over the array of data.js and match it with the user's choice, filter forward the match
+                if(isGif){
+                    usersChoice = cat.emotionTags.includes(selectedEmotion) && cat.isGif
+                }
+                else {
+                    usersChoice = cat.emotionTags.includes(selectedEmotion)
+                }
+                console.log(usersChoice) //this console.log displays every forloop and states whether the if is true or false (you can also place it in the if and else parts)
+                return usersChoice
+            })
+            return matchingCatsArray
+        }  
+    }
 
-function OneRandomCatFromMatchingCatsArray(){
-    let matchingCatsArray = getMatchingCatsArray()
-    let randomIndex = Math.floor(Math.random() * matchingCatsArray.length)
-    let oneRandomCat = matchingCatsArray[randomIndex]
-    console.log(oneRandomCat)
-    return oneRandomCat
-}
+    function OneRandomCatFromMatchingCatsArray(){
+        let matchingCatsArray = getMatchingCatsArray()
+        let randomIndex = Math.floor(Math.random() * matchingCatsArray.length)
+        let oneRandomCat = matchingCatsArray[randomIndex]
+        console.log(oneRandomCat)
+        return oneRandomCat
+    }
 
-function renderFinalCat(){
-   let catToShow = OneRandomCatFromMatchingCatsArray()
-   memeModal.style.display = "flex"
-   memeModalInner.innerHTML = `<img class="cat-img" src=${catToShow.image} alt=${catToShow.alt}/>`
-}
+    function renderFinalCat(){
+    let catToShow = OneRandomCatFromMatchingCatsArray()
+    memeModal.style.display = "flex"
+    memeModalInner.innerHTML = `<img class="cat-img" src=${catToShow.image} alt=${catToShow.alt}/>`
+    }
 
 memeModalCloseBtn.addEventListener("click",() =>{
     memeModal.style.display = "none"
