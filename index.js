@@ -105,3 +105,9 @@ getImageBtn.addEventListener("click", () => { // FUNCTIONS TO GET US A FINAL CAT
 memeModalCloseBtn.addEventListener("click",() =>{
     memeModal.style.display = "none"
 })
+
+document.addEventListener('click', function(event) {
+    if (memeModal.style.display === 'flex' && !memeModal.contains(event.target) && event.target !== getImageBtn) {
+        memeModal.style.display = "none";
+    }
+});
