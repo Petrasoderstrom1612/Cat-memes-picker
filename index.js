@@ -99,7 +99,7 @@ getImageBtn.addEventListener("click", () => { // FUNCTIONS TO GET US A FINAL CAT
     function renderFinalCat(){
     let catToShow = OneRandomCatFromMatchingCatsArray()
     memeModal.style.display = "flex"
-    memeModalInner.innerHTML = `<img class="cat-img" src=${catToShow.image} alt=${catToShow.alt}/>`
+    memeModalInner.innerHTML = `<img class="cat-img" src=./images/${catToShow.image} alt=${catToShow.alt}/>`
     }
 
 memeModalCloseBtn.addEventListener("click",() =>{

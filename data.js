@@ -2,19 +2,31 @@ export const catsData = [
     {
         emotionTags: ["moody"],
         isGif: true,
-        image: "angry.jpeg",
+        image: "moody1.gif",
         alt: "A cat looking moody",
     },
     {
-        emotionTags: ["moody", "insomniac"],
-        isGif: true,
-        image: "angry2.jpeg",
-        alt: "A cat looking moody",
-    },
-    {
-        emotionTags: ["sad"],
+        emotionTags: ["moody", "sad"],
         isGif: false,
-        image: "pumpkincat.png",
-        alt: "A cat looking sad",
+        image: "moodysad1.jpg",
+        alt: "A cat looking moody and sad",
+    },
+    {
+        emotionTags: ["happy"],
+        isGif: false,
+        image: "happy1.jpg",
+        alt: "A cat looking happy",
+    },
+    {
+        emotionTags: ["happy","crazy"],
+        isGif: false,
+        image: "happycrazy1.jpg",
+        alt: "A cat looking happy and crazy",
+    },
+    {
+        emotionTags: ["calm","happy"],
+        isGif: false,
+        image: "calm1.jpg",
+        alt: "A cat looking calm and happy",
     }
 ]
