@@ -14,7 +14,7 @@ export const catsData = [
     {
         emotionTags: ["sad"],
         isGif: false,
-        image: "sad.gif",
+        image: "pumpkincat.png",
         alt: "A cat looking sad",
     }
 ]

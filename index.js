@@ -3,6 +3,9 @@ import {catsData} from "./data.js"
 const emotionRadiosEl = document.getElementById("emotion-radios-el")
 const getImageBtn = document.getElementById("get-image-btn")
 const gifsOnlyOption = document.getElementById("gifs-only-option")
+const memeModalInner = document.getElementById("meme-modal-inner")
+const memeModal = document.getElementById("meme-modal")
+const memeModalCloseBtn = document.getElementById("meme-modal-close-btn")
 
 // function getEmotionsArr(cats){    //catsData will be taken in as cats
 //     let newArr = []
@@ -48,7 +51,7 @@ function renderEmotionRadios(cats){ //THIS FUNCTION IS TO CREATE AN HTML WITH EM
     emotionRadiosEl.innerHTML = radioBtns
 }
 
-renderEmotionRadios(catsData)
+renderEmotionRadios(catsData) //ACTIVATES THE TWO FUNCTIONS ABOVE AS THE SECOND FUNCTION CALLS THE FIRST ONE
 
 emotionRadiosEl.addEventListener("change", highlightChecked) //CSS TO HIGHLIGHT CHECKED
 
@@ -61,8 +64,8 @@ for (let oneChecked of checkedCollection){
     document.getElementById(e.target.id).parentElement.classList.add("highlight") //highlight only the last one and you do it on where you click as it is input and it's parent is "radio" since it colors the entire line
 }
 
-getImageBtn.addEventListener("click", () => { //when getting image, find which emotion was checked and if gif is wanted
-    getMatchingCatsArray()
+getImageBtn.addEventListener("click", () => { // FUNCTION TO GET US A FINAL CAT, invokes all the three following functions below, from the last one that invokes one above and that one one above 
+    renderFinalCat()
 })
 
 function getMatchingCatsArray(){     
@@ -81,6 +84,24 @@ function getMatchingCatsArray(){
             console.log(usersChoice) //this console.log displays every forloop and states whether the if is true or false (you can also place it in the if and else parts)
             return usersChoice
         })
-        console.log(matchingCatsArray)
+        return matchingCatsArray
     }  
 }
+
+function OneRandomCatFromMatchingCatsArray(){
+    let matchingCatsArray = getMatchingCatsArray()
+    let randomIndex = Math.floor(Math.random() * matchingCatsArray.length)
+    let oneRandomCat = matchingCatsArray[randomIndex]
+    console.log(oneRandomCat)
+    return oneRandomCat
+}
+
+function renderFinalCat(){
+   let catToShow = OneRandomCatFromMatchingCatsArray()
+   memeModal.style.display = "flex"
+   memeModalInner.innerHTML = `<img class="cat-img" src=${catToShow.image} alt=${catToShow.alt}/>`
+}
+
+memeModalCloseBtn.addEventListener("click",() =>{
+    memeModal.style.display = "none"
+})
