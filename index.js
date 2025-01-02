@@ -74,7 +74,7 @@ getImageBtn.addEventListener("click", () => { // FUNCTIONS TO GET US A FINAL CAT
             const isGif = gifsOnlyOption.checked //if user chose gif or not
             let usersChoice
             
-            const matchingCatsArray = catsData.filter(function(cat){ //filter over the array of data.js and match it with the user's choice, filter forward the match
+            const matchingCatsArray = catsData.filter(function(cat){ //filter over the array of data.js and match it with the user's choice, filter forward the match. Note that you can use if-statement in a filter method!
                 if(isGif){
                     usersChoice = cat.emotionTags.includes(selectedEmotion) && cat.isGif
                 }
